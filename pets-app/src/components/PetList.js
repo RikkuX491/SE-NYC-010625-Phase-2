@@ -1,8 +1,11 @@
+// Deliverable # 13 solution code
 import { dog, cat } from "../data/petsData"
 
+// Deliverable # 7 solution code
 function PetList(){
     return (
         <ul className="pet-list">
+            {/* Deliverable # 14 - 16 solution code */}
             <li className="pet">
                 <img src={dog.image} alt={dog.name}/>
                 <h4>{dog.name}</h4>
@@ -15,4 +18,5 @@ function PetList(){
     )
 }
 
+// Deliverable # 8 solution code
 export default PetList;
