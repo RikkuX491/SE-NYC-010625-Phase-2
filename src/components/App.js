@@ -9,7 +9,9 @@ function App() {
   return (
     <div className="app">
         <Header/>
-        <PetList/>
+
+        {/* Deliverable # 1 solution code */}
+        <PetList pets={pets}/>
     </div>
   );
 }
