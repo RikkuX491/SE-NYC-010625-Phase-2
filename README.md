@@ -37,7 +37,7 @@ import { useState } from "react";
 
 5. Use the ternary operator to set the value for the `className` attribute for the `<h4>` element returned from the `Pet` component to "display-animal-type" if the value of `displayAnimalType` is true, and "" (empty string) if the value of `displayAnimalType` is false. For the text content of the `<h4>` element, conditionally render either the pet's animal_type if `displayAnimalType` is true or the pet's name if `displayAnimalType` is false.
 
-6. Add a click event listener to the `<h4>` element returned from the `Pet` component. Clicking the button should invoke a callback function that will call the setter function `setDisplayAnimalType`. Use the `setDisplayAnimalType` setter function change the value of `displayAnimalType` to `true` if it is false, or change the value to `false` if it is true.
+6. Add a click event listener to the `<h4>` element returned from the `Pet` component. Clicking the `<h4>` element should invoke a callback function that will call the setter function `setDisplayAnimalType`. Use the `setDisplayAnimalType` setter function change the value of `displayAnimalType` to `true` if it is false, or change the value to `false` if it is true.
 
 ### Events
 
