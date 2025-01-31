@@ -36,9 +36,16 @@ function PetPage(){
         }))
     }
 
+    function addPet(newPetData){
+        // console.log(newPetData)
+        // petsState.push(newPetData)
+        const updatedPetsArray = [...petsState, newPetData]
+        setPetsState(updatedPetsArray)
+    }
+
     return (
         <main>
-            <NewPetForm/>
+            <NewPetForm addPet={addPet}/>
             <Search updateSearchText={updateSearchText}/>
             <PetList pets={filteredPets} deletePet={deletePet} updatePet={updatePet}/>
         </main>
