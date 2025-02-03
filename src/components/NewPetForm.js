@@ -16,13 +16,26 @@ function NewPetForm({addPet}) {
   function handleSubmit(event){
     event.preventDefault()
 
+    // Deliverable # 2 solution code
     const newPet = {
-      id: uuid(),
       ...formData,
       likes: 0
     }
 
-    addPet(newPet)
+    // Deliverable # 3 solution code
+    fetch("http://localhost:4000/pets", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(newPet)
+    })
+    .then(response => {
+      if(response.ok){
+        response.json().then(newPetData => addPet(newPetData))
+      }
+    })
     
     setFormData({
       name: "",
