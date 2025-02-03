@@ -1,5 +1,5 @@
 import PetList from "./PetList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Search from './Search';
 import NewPetForm from "./NewPetForm";
 
@@ -7,6 +7,47 @@ function PetPage(){
 
     const [pets, setPets] = useState([])
     const [searchText, setSearchText] = useState("")
+
+    // console.log('Before useEffect code...')
+
+    useEffect(() => {
+        // console.log('Executing side effect function code')
+
+        fetch("http://localhost:4000/pets")
+        .then(response => {
+            if(response.ok){
+                response.json().then(petsData => setPets(petsData))
+            }
+            else{
+                alert("Error: Unable to retrieve pets data!")
+            }
+        })
+
+        // setPets([{
+        //     id: 1,
+        //     name: "Fido",
+        //     image: "/images/dog.jpeg",
+        //     animal_type: "Dog",
+        //     likes: 5
+        // }])
+    }, [])
+
+    // No dependency array example
+    // useEffect(() => {
+    //     console.log('The side effect function was called!')
+    // })
+
+    // Empty dependency array example
+    // useEffect(() => {
+    //     console.log('The side effect function was called!')
+    // }, [])
+
+    // Dependency array with searchText state example
+    // useEffect(() => {
+    //     console.log('The side effect function was called!')
+    // }, [searchText])
+
+    // console.log('After useEffect code...')
 
     const filteredPets = pets.filter(pet => {
         return pet.name.toUpperCase().includes(searchText.toUpperCase())
