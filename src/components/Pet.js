@@ -25,7 +25,7 @@ function Pet({pet, deletePet, updatePet}){
         <li className="pet">
             <img src={pet.image} alt={pet.name}/>
             <h4 onClick={toggleDisplayAnimalType} className={displayAnimalType ? "display-animal-type" : ""}>{displayAnimalType ? pet.animal_type : pet.name}</h4>
-            { true ?
+            { false ?
             <form className="edit-pet">
                 <input type="text" name="name" placeholder="Pet name" />
                 <input type="text" name="image" placeholder="Image URL" />
