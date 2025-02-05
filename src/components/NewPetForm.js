@@ -16,10 +16,26 @@ function NewPetForm({addPet}) {
     event.preventDefault()
 
     const newPet = {
-      ...formData
+      ...formData,
+      likes: 0
     }
 
-    addPet(newPet)
+    fetch('http://localhost:4000/pets', {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+      },
+      body: JSON.stringify(newPet)
+    })
+    .then(response => {
+      if(response.ok){
+        response.json().then(newPetData => addPet(newPetData))
+      }
+      else{
+        alert("Error: Unable to add new pet!")
+      }
+    })
     
     setFormData({
       name: "",
@@ -41,4 +57,4 @@ function NewPetForm({addPet}) {
   );
 }
   
-  export default NewPetForm;
+export default NewPetForm;
