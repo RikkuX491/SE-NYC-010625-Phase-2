@@ -136,7 +136,7 @@ import { useOutletContext, useNavigate } from "react-router-dom";
 const navigate = useNavigate();
 ```
 
-22. Call your `navigate()` function in the `handleSubmit()` function, in the `NewPetForm` component, after all other code in `handleSubmit()` has finished executing. Pass in an argument of `'/'` to the `navigate()` so that the website will navigate to the `/` route after the form is submitted.
+22. Call your `navigate()` function in the `handleSubmit()` function, in the `NewPetForm` component, after the `addPet()` function has been called. Pass in an argument of `'/'` to the `navigate()` function so that the website will navigate to the `/` route after the form is submitted.
 
 23. In the `Pet.js` file, write the following code to import `Link` into `Pet.js`:
 
@@ -144,7 +144,7 @@ const navigate = useNavigate();
 import { Link } from "react-router-dom";
 ```
 
-24. Render a `<Link>` component (both opening and closing tags) below the `<h4>` element within the `<li>` element. The `<Link>` component should have a `to` prop that has the value of `/pets/${pet.id}`. The text content for the `<Link>` component should have the value of `View ${pet.name}'s profile`.
+24. Render a `<Link>` component (both opening and closing tags) below the `<h4>` element within the `<li>` element. The `<Link>` component should have a `to` prop that has the value of `/pets/${pet.id}`. The text content for the `<Link>` component should have the value of `View {pet.name}'s profile`.
 
 25. In the `PetProfile.js` file, write the following code to import `useParams` and `useOutletContext` into `PetProfile.js`:
 

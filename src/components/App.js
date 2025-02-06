@@ -3,6 +3,10 @@ import PetList from "./PetList";
 import { useState, useEffect } from "react";
 import NewPetForm from "./NewPetForm";
 
+// Deliverable # 13 solution code
+import NavBar from "./NavBar";
+import { Outlet } from "react-router-dom";
+
 function App(){
 
     const [pets, setPets] = useState([]);
@@ -34,11 +38,19 @@ function App(){
         }))
     }
 
+    // Deliverable # 14 solution code
     return (
       <div className="app">
+        <NavBar/>
         <Header/>
-        <NewPetForm addPet={addPet}/>
-        <PetList pets={pets}/>
+        <Outlet context={
+            {
+                pets: pets,
+                addPet: addPet,
+                updatePet: updatePet,
+                deletePet: deletePet
+            }
+        }/>
       </div>
     );
 }
