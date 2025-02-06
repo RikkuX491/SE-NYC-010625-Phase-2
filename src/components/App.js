@@ -14,19 +14,9 @@ function App(){
     }, []);
 
     function deletePet(id){
-        fetch(`http://localhost:4000/pets/${id}`, {
-            method: "DELETE"
-        })
-        .then(response => {
-            if(response.ok){
-                setPets((pets) => pets.filter(pet => {
-                    return pet.id !== id
-                }))
-            }
-            else{
-                alert("Error: Unable to delete pet!")
-            }
-        })
+        setPets(pets.filter(pet => {
+            return pet.id !== id
+        }))
     }
 
     function addPet(newPet){

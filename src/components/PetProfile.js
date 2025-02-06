@@ -24,8 +24,18 @@ function PetProfile(){
     }
 
     function handleAdoptButtonClick(){
-        deletePet(pet.id);
-        setPet(null);
+        fetch(`http://localhost:4000/pets/${pet.id}`, {
+            method: "DELETE"
+        })
+        .then(response => {
+            if(response.ok){
+                deletePet(pet.id)
+                setPet(null);
+            }
+            else{
+                alert(`Error: Unable to delete Pet # ${pet.id}!`)
+            }
+        })
     }
 
     function toggleDisplayForm(){
