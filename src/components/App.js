@@ -30,15 +30,7 @@ function App(){
     }
 
     function addPet(newPet){
-        fetch('http://localhost:4000/pets', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({...newPet, likes: 0})
-        })
-        .then(response => response.json())
-        .then(newPetData => setPets([...pets, newPetData]))
+        setPets([...pets, newPet])
     }
 
     function updatePet(id, petDataForUpdate){

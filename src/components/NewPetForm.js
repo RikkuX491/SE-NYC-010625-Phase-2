@@ -21,10 +21,22 @@ function NewPetForm({addPet}) {
     event.preventDefault();
 
     const newPet = {
-      ...formData
+      ...formData,
+      likes: 0
     };
 
-    addPet(newPet);
+    fetch('http://localhost:4000/pets', {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+      },
+      body: JSON.stringify(newPet)
+    })
+    .then(response => response.json())
+    .then(newPetData => {
+        addPet(newPetData)
+    })
     
     setFormData({
       name: "",
