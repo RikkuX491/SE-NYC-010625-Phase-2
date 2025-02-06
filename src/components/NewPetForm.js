@@ -36,6 +36,7 @@ function NewPetForm({addPet}) {
     .then(response => response.json())
     .then(newPetData => {
         addPet(newPetData)
+        // Write the code to call your navigate() function that you created earlier. Pass in an argument of "/" to your navigate function so that the website will navigate to the "/" route when the form is submitted
     })
     
     setFormData({
@@ -43,8 +44,6 @@ function NewPetForm({addPet}) {
       image: "",
       animal_type: ""
     });
-
-    // Write the code to call your navigate() function that you created earlier. Pass in an argument of "/" to your navigate function so that the website will navigate to the "/" route when the form is submitted
   }
 
   return (
