@@ -1,11 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 import App from './components/App';
+
+// import NavBar from "./components/NavBar";
+// import Header from "./components/Header";
+
+import ErrorPage from './components/ErrorPage';
+import PetList from './components/PetList';
+import NewPetForm from './components/NewPetForm';
+import PetProfile from "./components/PetProfile";
+
 import reportWebVitals from './reportWebVitals';
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App />,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "/",
+                element: <PetList/>
+            },
+            {
+                path: "/add_pet",
+                element: <NewPetForm/>
+            },
+            {
+                path: "/profile/:id",
+                element: <PetProfile/>
+            }
+        ]
+    }
+])
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(<RouterProvider router={router}/>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
