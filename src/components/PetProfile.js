@@ -45,8 +45,7 @@ function PetProfile(){
     function handleSubmit(event){
         event.preventDefault();
 
-        updatePet(pet.id, formData);
-        setPet({...pet, ...formData});
+        makePatchRequest(formData)
 
         toggleDisplayForm();
     }
@@ -56,13 +55,33 @@ function PetProfile(){
     }
 
     function handleLikeButtonClick(){
-        const updatedLikesObject = {likes: pet.likes + 1};
+        const updatedPetData = {
+            likes: pet.likes + 1
+        };
 
-        updatePet(pet.id, updatedLikesObject);
+        makePatchRequest(updatedPetData)
+    }
 
-        setPet(pet => {
-            return {...pet, likes: pet.likes + 1}
-        });
+    function makePatchRequest(updatedPetData){
+        fetch(`http://localhost:4000/pets/${pet.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(updatedPetData)
+        })
+        .then(response => {
+            if(response.ok){
+                response.json().then(updatedPetObject => {
+                    updatePet(updatedPetObject);
+                    setPet(updatedPetObject);
+                })
+            }
+            else{
+                alert(`Error: Unable to update data for Pet # ${pet.id}!`)
+            }
+        })
     }
 
     return (

@@ -23,24 +23,15 @@ function App(){
         setPets([...pets, newPet])
     }
 
-    function updatePet(id, petDataForUpdate){
-        fetch(`http://localhost:4000/pets/${id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(petDataForUpdate)
-        })
-        .then(response => response.json())
-        .then(updatedPet => setPets(pets => pets.map(pet => {
-            if(updatedPet.id === pet.id){
-                return updatedPet
+    function updatePet(updatedPetData){
+        setPets(pets.map(pet => {
+            if(pet.id === updatedPetData.id){
+                return updatedPetData
             }
             else{
                 return pet
             }
-        })))
+        }))
     }
 
     return (
